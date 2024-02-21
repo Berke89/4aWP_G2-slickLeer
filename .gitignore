@@ -18,7 +18,7 @@ hs_err_pid*
 .gradle/
 gradle-app.setting
 /build/
-/android/build/
+/javadoc/
 /core/build/
 /desktop/build/
 /html/build/
