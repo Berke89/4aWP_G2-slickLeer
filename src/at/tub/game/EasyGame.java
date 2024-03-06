@@ -9,6 +9,7 @@ public class EasyGame extends BasicGame {
     private MeinUfo mUfo;
     private ArrayList <MeinUfo> mUfoList;
     private Image background;
+    private Crusher crusher;
 
 
     public EasyGame() {
@@ -31,9 +32,11 @@ public class EasyGame extends BasicGame {
     public void init(GameContainer container) throws SlickException {
         background = new Image("assets/pics/background.png");
         mUfo = new MeinUfo(100,100,new Image("assets/pics/meinufo.png"));
+        crusher = new Crusher(512,700,new Image("assets/pics/crusher.png"),container.getInput());
         mUfoList = new ArrayList<MeinUfo>();
         for(int i=1;i<=10;i++){
             mUfoList.add(new MeinUfo(100,100,new Image("assets/pics/meinufo.png")));
+
         }
 
     }
@@ -49,6 +52,8 @@ public class EasyGame extends BasicGame {
         mUfo.update(delta);
         for (MeinUfo u : mUfoList)
             u.update(delta);
+            if (mUfo.getShape())
+        crusher.update(delta);
 
 
     }
@@ -57,6 +62,7 @@ public class EasyGame extends BasicGame {
     public void render(GameContainer container, Graphics g) throws SlickException {
         background.draw();
         mUfo.draw(g);
+        crusher.draw(g);
         for (MeinUfo u: mUfoList) u.draw(g);
 
     }
