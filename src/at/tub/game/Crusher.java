@@ -14,7 +14,7 @@ public class Crusher extends Spielobjekt{
     public Crusher(int x, int y, Image image, Input input) {
         super(x, y, image);
         this.input = input;
-        shape = new Rectangle(x, y, image.getWidth(), image.getHeight());
+        this.shape = new Rectangle(x, y, image.getWidth(), image.getHeight());
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Crusher extends Spielobjekt{
 
     @Override
     public Shape getShape() {
-        return shape;
+        return this.shape;
     }
 
     @Override
@@ -45,11 +45,17 @@ public class Crusher extends Spielobjekt{
         }
         if (pressed){
             acceleration+= delta;
-            if (acceleration > 15) acceleration=15;
+            if (acceleration > 50) acceleration= 50;
         } else {
             acceleration = 0.1f;
         }
         shape.setCenterX(this.getX());
         shape.setCenterY(this.getY());
+    }
+    public boolean intersects (Shape shape){
+        if (shape != null){
+            return this.getShape().intersects(shape);
+        }
+        return false;
     }
 }
