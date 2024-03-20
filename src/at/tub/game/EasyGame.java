@@ -80,7 +80,7 @@ public class EasyGame extends BasicGame {
             }
             if (u.getY() > 768) {
                 miss ++;
-                u.setRandomPosition();
+                u.setRandomPosition();8
             }
             u.update(delta);
         }
